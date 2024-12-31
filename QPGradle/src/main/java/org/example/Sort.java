@@ -1,3 +1,5 @@
+package org.example;
+
 public class Sort {
     private OrderDirectionType orderDirectionType = OrderDirectionType.ASC;
     private Source orderSource;

@@ -1,3 +1,5 @@
+package org.example;
+
 public class Source {
     private String sourceTable;
     private Query sourceQuery;

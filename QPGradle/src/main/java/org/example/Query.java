@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,6 +53,8 @@ public class Query {
         System.out.print("SELECT: ");
         System.out.println(columns.stream()
                     .collect(Collectors.joining(", ")));
+
+        //почему-то не печатаю тут fromSources
 
 
 

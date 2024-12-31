@@ -1,3 +1,5 @@
+package org.example;
+
 public class Join {
     private Source joinSource;
     private JoinType joinType = JoinType.INNER;

@@ -1,3 +1,5 @@
+package org.example;
+
 public class WhereClause {
     private String columnName;
     private String operator;

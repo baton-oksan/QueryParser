@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -146,7 +148,7 @@ public class SQLParser {
             for (int i = 0; i < whereSplit.length; i++) {
                 String whereItem = whereSplit[i];
                 String[] whereItemToArray = whereItem.split(" ");
-                //если whereItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект Query и засунуть его аргументом в конструктор
+                //если whereItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект org.example.Query и засунуть его аргументом в конструктор
                 if (whereItemToArray[2].contains("<Subquery_")) {
                     String subquery = subqueriesMap.get(whereItemToArray[2]);
                     Source source = new Source(SQLParser.parseQuery(subquery));
@@ -184,7 +186,7 @@ public class SQLParser {
             for (int i = 0; i < whereSplit.length; i++) {
                 String whereItem = whereSplit[i];
                 String[] whereItemToArray = whereItem.split(" ");
-                //если whereItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект Query и засунуть его аргументом в конструктор
+                //если whereItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект org.example.Query и засунуть его аргументом в конструктор
                 havingList.add(new WhereClause(whereItemToArray[0], whereItemToArray[1], new Source(whereItemToArray[2])));
             }
         }
@@ -212,8 +214,8 @@ public class SQLParser {
         //ORDER BY department ASC, salary DESC;
         //надо сначала сплитануть по запятой, а потом каждый айтем парсить регуляркой "//s*(.*?)//s+(ASC|DESC)?//s*"
         //первая группа - наш сурс – создаем объект сурс
-        //вторая группа – если не null то создаем объект Sort расширенным конструктором
-        //иначе создаем объект Sort с конструктором, который принимает только сурс
+        //вторая группа – если не null то создаем объект org.example.Sort расширенным конструктором
+        //иначе создаем объект org.example.Sort с конструктором, который принимает только сурс
 
     }
 
