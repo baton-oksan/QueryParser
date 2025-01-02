@@ -7,9 +7,9 @@ public class Query {
     private List<String> columns;
     private List<Source> fromSources;
     private List<Join> joins;
-    private List<WhereClause> whereClauses;
+    private List<Condition> whereClauses;
     private List<String> groupByColumns;
-    private List<WhereClause> havingClauses;
+    private List<Condition> havingClauses;
     private List<Sort> sortColumns;
     private Integer limit;
     private Integer offset;
@@ -26,7 +26,7 @@ public class Query {
         this.joins = joins;
     }
 
-    public void setWheres(List<WhereClause> whereClauses) {
+    public void setWheres(List<Condition> whereClauses) {
         this.whereClauses = whereClauses;
     }
 
@@ -34,7 +34,7 @@ public class Query {
         this.groupByColumns = groupByColumns;
     }
 
-    public void setHavingClauses (List<WhereClause> havingClauses) {
+    public void setHavingClauses (List<Condition> havingClauses) {
         this.havingClauses = havingClauses;
     }
 
@@ -67,7 +67,7 @@ public class Query {
 
         if (whereClauses != null) {
             System.out.print("WHERE: ");
-            for (WhereClause whereClause: whereClauses) {
+            for (Condition whereClause: whereClauses) {
                 whereClause.printWhere();
             }
         }
@@ -80,7 +80,7 @@ public class Query {
 
         if (havingClauses != null) {
             System.out.print("HAVING: ");
-            for (WhereClause whereClause: havingClauses) {
+            for (Condition whereClause: havingClauses) {
                 whereClause.printWhere();
             }
         }
@@ -101,11 +101,5 @@ public class Query {
             System.out.print("OFFSET: ");
             System.out.println(offset);
         }
-
     }
-
-
-
-
-
 }

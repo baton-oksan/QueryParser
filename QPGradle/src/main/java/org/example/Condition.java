@@ -1,11 +1,11 @@
 package org.example;
 
-public class WhereClause {
+public class Condition {
     private String columnName;
     private String operator;
     private Source source;
 
-    public WhereClause(String columnName, String operator, Source source) {
+    public Condition(String columnName, String operator, Source source) {
         this.columnName = columnName;
         this.operator = operator;
         this.source = source;

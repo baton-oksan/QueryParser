@@ -5,7 +5,6 @@ import org.example.parsers.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class SQLParser {
     //private static ArrayList<String> keywords =  new ArrayList<String>(Arrays.asList("select", "from", "where", "left join", "right join", "limit", "offset", "group by", "order by", "and", "in", "asc", "desc", "as", "on"));
@@ -22,9 +21,8 @@ public class SQLParser {
     private static SelectParser selectParser;
     private static FromParser fromParser;
     private static JoinParser joinParser;
-    private static WhereParser whereParser;
+    private static ConditionParser conditionParser;
     private static GroupParser groupParser;
-    private static HavingParser havingParser;
     private static SortParser sortParser;
 
 
@@ -60,13 +58,13 @@ public class SQLParser {
                 query.setJoins(joinParser.parse(queryMatcher.group(JOIN_GROUP)));
 
             if (queryMatcher.group(WHERE_GROUP) != null)
-                query.setWheres(whereParser.parse(queryMatcher.group(WHERE_GROUP)));
+                query.setWheres(conditionParser.parse(queryMatcher.group(WHERE_GROUP)));
 
             if (queryMatcher.group(GROUP_BY_GROUP) != null)
                 query.setGroupByColumns(groupParser.parse(queryMatcher.group(GROUP_BY_GROUP)));
 
             if (queryMatcher.group(HAVING_GROUP) != null)
-                query.setHavingClauses(havingParser.parse(queryMatcher.group(HAVING_GROUP)));
+                query.setHavingClauses(conditionParser.parse(queryMatcher.group(HAVING_GROUP)));
 
             if (queryMatcher.group(ORDER_GROUP) != null)
                 query.setSortColumns(sortParser.parse(queryMatcher.group(ORDER_GROUP)));
@@ -85,9 +83,8 @@ public class SQLParser {
         selectParser = new SelectParser();
         fromParser = new FromParser();
         joinParser = new JoinParser();
-        whereParser = new WhereParser();
+        conditionParser = new ConditionParser();
         groupParser = new GroupParser();
-        havingParser = new HavingParser();
         sortParser = new SortParser();
     }
 
