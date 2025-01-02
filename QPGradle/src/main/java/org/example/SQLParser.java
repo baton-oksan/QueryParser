@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.parsers.*;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +19,14 @@ public class SQLParser {
     private static final int LIMIT_GROUP = 8;
     private static final int OFFSET_GROUP = 9;
     public static Map<String, String> subqueriesMap;
+    private static SelectParser selectParser;
+    private static FromParser fromParser;
+    private static JoinParser joinParser;
+    private static WhereParser whereParser;
+    private static GroupParser groupParser;
+    private static HavingParser havingParser;
+    private static SortParser sortParser;
+
 
     public static Query parseQuery (String inputQuery) {
 
@@ -47,31 +57,36 @@ public class SQLParser {
         );
         Matcher queryMatcher = queryPattern.matcher(workingQuery);
         Query query = new Query();
+
+
+        initParsers();
+
+
         if(queryMatcher.find()) {
             if (queryMatcher.group(SELECT_GROUP) != null)
-                query.setColumns(parseSelect(queryMatcher.group(SELECT_GROUP)));
+                query.setColumns(selectParser.parse(queryMatcher.group(SELECT_GROUP)));
              else
                  System.out.println("Invalid query");
 
             if (queryMatcher.group(FROM_GROUP) != null) {
-                query.setFromSources(parseFromSubquery(queryMatcher.group(FROM_GROUP)));
+                query.setFromSources(fromParser.parse(queryMatcher.group(FROM_GROUP)));
             } else
                 System.out.println("Invalid query");
 
             if (queryMatcher.group(JOIN_GROUP) != null)
-                query.setJoins(parseJoin(queryMatcher.group(JOIN_GROUP)));
+                query.setJoins(joinParser.parse(queryMatcher.group(JOIN_GROUP)));
 
             if (queryMatcher.group(WHERE_GROUP) != null)
-                query.setWheres(parseWhere(queryMatcher.group(WHERE_GROUP)));
+                query.setWheres(whereParser.parse(queryMatcher.group(WHERE_GROUP)));
 
             if (queryMatcher.group(GROUP_BY_GROUP) != null)
-                query.setGroupByColumns(parseGroupBy(queryMatcher.group(GROUP_BY_GROUP)));
+                query.setGroupByColumns(groupParser.parse(queryMatcher.group(GROUP_BY_GROUP)));
 
             if (queryMatcher.group(HAVING_GROUP) != null)
-                query.setHavingClauses(parseHaving(queryMatcher.group(HAVING_GROUP)));
+                query.setHavingClauses(havingParser.parse(queryMatcher.group(HAVING_GROUP)));
 
             if (queryMatcher.group(ORDER_GROUP) != null)
-                query.setSortColumns(parseSort(queryMatcher.group(ORDER_GROUP)));
+                query.setSortColumns(sortParser.parse(queryMatcher.group(ORDER_GROUP)));
 
             if (queryMatcher.group(LIMIT_GROUP) != null)
                 query.setLimit(Integer.parseInt(queryMatcher.group(LIMIT_GROUP)));
@@ -83,7 +98,7 @@ public class SQLParser {
         return query;
     }
 
-    private static ArrayList<String> parseSelect(String selectString) {
+/*    private static ArrayList<String> parseSelect(String selectString) {
         ArrayList<String> selectParseResult = Arrays.stream(selectString.split(","))
                 .map(String::trim)
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -217,6 +232,16 @@ public class SQLParser {
         //вторая группа – если не null то создаем объект org.example.Sort расширенным конструктором
         //иначе создаем объект org.example.Sort с конструктором, который принимает только сурс
 
+    }*/
+
+    private static void initParsers() {
+        selectParser = new SelectParser();
+        fromParser = new FromParser();
+        joinParser = new JoinParser();
+        whereParser = new WhereParser();
+        groupParser = new GroupParser();
+        havingParser = new HavingParser();
+        sortParser = new SortParser();
     }
 
 
