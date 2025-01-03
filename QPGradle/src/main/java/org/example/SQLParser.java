@@ -40,42 +40,43 @@ public class SQLParser {
         );
         Matcher queryMatcher = queryPattern.matcher(workingQuery);
 
-        Query query = new Query();
+        Query.QueryBuilder queryBuilder = new Query.QueryBuilder();
         initParsers();
 
         if(queryMatcher.find()) {
             if (queryMatcher.group(SELECT_GROUP) != null)
-                query.setColumns(selectParser.parse(queryMatcher.group(SELECT_GROUP)));
+                queryBuilder.columns(selectParser.parse(queryMatcher.group(SELECT_GROUP)));
              else
                  System.out.println("Invalid query");
 
             if (queryMatcher.group(FROM_GROUP) != null) {
-                query.setFromSources(fromParser.parse(queryMatcher.group(FROM_GROUP)));
+                queryBuilder.fromSources(fromParser.parse(queryMatcher.group(FROM_GROUP)));
             } else
                 System.out.println("Invalid query");
 
             if (queryMatcher.group(JOIN_GROUP) != null)
-                query.setJoins(joinParser.parse(queryMatcher.group(JOIN_GROUP)));
+                queryBuilder.joins(joinParser.parse(queryMatcher.group(JOIN_GROUP)));
 
             if (queryMatcher.group(WHERE_GROUP) != null)
-                query.setWheres(conditionParser.parse(queryMatcher.group(WHERE_GROUP)));
+                queryBuilder.whereClauses(conditionParser.parse(queryMatcher.group(WHERE_GROUP)));
 
             if (queryMatcher.group(GROUP_BY_GROUP) != null)
-                query.setGroupByColumns(groupParser.parse(queryMatcher.group(GROUP_BY_GROUP)));
+                queryBuilder.groupByColumns(groupParser.parse(queryMatcher.group(GROUP_BY_GROUP)));
 
             if (queryMatcher.group(HAVING_GROUP) != null)
-                query.setHavingClauses(conditionParser.parse(queryMatcher.group(HAVING_GROUP)));
+                queryBuilder.havingClauses(conditionParser.parse(queryMatcher.group(HAVING_GROUP)));
 
             if (queryMatcher.group(ORDER_GROUP) != null)
-                query.setSortColumns(sortParser.parse(queryMatcher.group(ORDER_GROUP)));
+                queryBuilder.sortColumns(sortParser.parse(queryMatcher.group(ORDER_GROUP)));
 
             if (queryMatcher.group(LIMIT_GROUP) != null)
-                query.setLimit(Integer.parseInt(queryMatcher.group(LIMIT_GROUP)));
+                queryBuilder.limit(Integer.parseInt(queryMatcher.group(LIMIT_GROUP)));
 
             if (queryMatcher.group(OFFSET_GROUP) != null)
-                query.setOffset(Integer.parseInt(queryMatcher.group(OFFSET_GROUP)));
+                queryBuilder.offset(Integer.parseInt(queryMatcher.group(OFFSET_GROUP)));
         }
 
+        Query query = queryBuilder.build();
         return query;
     }
 
