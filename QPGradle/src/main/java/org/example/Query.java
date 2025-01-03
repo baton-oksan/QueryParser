@@ -26,40 +26,15 @@ public class Query {
         this.offset = builder.offset;
     }
 
-    public void setColumns(List<String> columns) {
-        this.columns = columns;
-    }
-
-    public void setFromSources(List<Source> fromSources) {
-        this.fromSources = fromSources;
-    }
-
-    public void setJoins(List<Join> joins) {
-        this.joins = joins;
-    }
-
-    public void setWheres(List<Condition> whereClauses) {
-        this.whereClauses = whereClauses;
-    }
-
-    public void setGroupByColumns (List<String> groupByColumns) {
-        this.groupByColumns = groupByColumns;
-    }
-
-    public void setHavingClauses (List<Condition> havingClauses) {
-        this.havingClauses = havingClauses;
-    }
-
-    public void setSortColumns (List<Sort> sortColumns) {
-        this.sortColumns = sortColumns;
-    }
-
-    public void setLimit (int limit) {
-        this.limit = limit;
-    }
-    public void setOffset (int offset) {
-        this.offset = offset;
-    }
+    public List<String> getColumns() {return columns;}
+    public List<Source> getFromSources() {return fromSources;}
+    public List<Join> getJoins() {return joins;}
+    public List<Condition> getWhereClauses() {return whereClauses;}
+    public List<String> getGroupByColumns() {return groupByColumns;}
+    public List<Condition> getHavingClauses() {return havingClauses;}
+    public List<Sort> getSortColumns() {return sortColumns;}
+    public Integer getLimit() {return limit;}
+    public Integer getOffset() {return offset;}
 
     public void printQuery() {
         System.out.print("SELECT: ");
