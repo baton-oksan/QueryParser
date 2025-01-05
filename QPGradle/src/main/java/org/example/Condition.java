@@ -5,6 +5,18 @@ public class Condition {
     private String operator;
     private Source source;
 
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public Source getSource() {
+        return source;
+    }
+
     public Condition(String columnName, String operator, Source source) {
         this.columnName = columnName;
         this.operator = operator;

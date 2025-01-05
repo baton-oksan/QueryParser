@@ -17,17 +17,27 @@ public class ConditionParser implements Parser<List<Condition>> {
               conditionString = parseBetween(conditionString);
 
         if (conditionString.length() > 3)
-            splitCondition(conditionString);
+            parseCondition(conditionString);
 
         return conditionsList;
     }
 
-    private String parseBetween(String conditionString) {
+    String parseBetween(String conditionString) {
         //если строка содержит between, то с помощью регулярки и группы, достать этот between и заменить на пробел
         //далее сплиттим получившуюся строку по слову AND или OR и получаем каждое условие по отдельности
-        Pattern betweenPattern = Pattern.compile("(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)\\s+(AND)?");
+        String[] splittedCondition = conditionString.split(" ");
+        Pattern betweenPattern;
+        if (splittedCondition.length > 5) {
+            betweenPattern = Pattern.compile("(?:.*?AND)?\\s+(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)\\s+(AND)?", Pattern.CASE_INSENSITIVE);
+        } else {
+            betweenPattern = Pattern.compile("(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)", Pattern.CASE_INSENSITIVE);
+        }
+
+        System.out.println("CONDITION STRING: " + conditionString);
+
         Matcher betweenMatch = betweenPattern.matcher(conditionString);
         while (betweenMatch.find()) {
+            System.out.println("Match found");
             Condition conditionClause = new Condition(betweenMatch.group(1), betweenMatch.group(2), new Source(betweenMatch.group(3)));
             conditionsList.add(conditionClause);
         }
@@ -35,7 +45,7 @@ public class ConditionParser implements Parser<List<Condition>> {
         return conditionString;
     }
 
-    private void splitCondition(String conditionString) {
+    void parseCondition(String conditionString) {
         String[] conditionSplit = conditionString.split(" AND | OR ", Pattern.CASE_INSENSITIVE);
         for (int i = 0; i < conditionSplit.length; i++) {
             String conditionItem = conditionSplit[i];
