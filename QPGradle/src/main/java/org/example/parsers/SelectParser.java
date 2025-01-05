@@ -10,8 +10,7 @@ public class SelectParser implements Parser<List<String>> {
                 .map(String::trim)
                 .collect(Collectors.toCollection(ArrayList::new));
         return selectParseResult;
-
     }
 }
 
-//раз в таком случае все классы получаются не_статическими, то придется делать что-то типа инициализатора что ли
+

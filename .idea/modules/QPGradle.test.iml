@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../QPGradle/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../QPGradle/src/test/resources" type="java-test-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="22" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="QPGradle.main" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter:5.10.0" level="project" />

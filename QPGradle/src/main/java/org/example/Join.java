@@ -7,6 +7,19 @@ public class Join {
 
     //поля: название таблицы (по сути  source), тип джойна (енам?) , условие джойна (on)
 
+    public Join() {}
+
+    public Join(Source joinSource, String joinType, String onCondition) {
+        this.joinSource = joinSource;
+        this.joinType = JoinType.valueOf(joinType);
+        this.onCondition = onCondition;
+    }
+
+    public Join(Source joinSource, String onCondition) {
+        this.joinSource = joinSource;
+        this.onCondition = onCondition;
+    }
+
     public void setJoinSource (Source joinSource) {
         this.joinSource = joinSource;
     }
@@ -17,6 +30,18 @@ public class Join {
 
     public void setOnCondition (String onCondition) {
         this.onCondition = onCondition;
+    }
+
+    public Source getJoinSource() {
+        return this.joinSource;
+    }
+
+    public JoinType getJoinType() {
+        return this.joinType;
+    }
+
+    public String getOnCondition() {
+        return this.onCondition;
     }
 
     public void printJoin() {

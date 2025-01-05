@@ -12,7 +12,7 @@ public class FromParser implements Parser<List<Source>> {
     public List<Source> parse(String fromString) {
         if (fromString.contains("<Subquery_")) {
             List<Source> sourceList = new ArrayList<>();
-            String subquery = SQLParser.subqueriesMap.get(fromString); //надо будет пересмотреть локацию мапы
+            String subquery = SQLParser.subqueriesMap.get(fromString);
             Source source = new Source(SQLParser.parseQuery(subquery));
             sourceList.add(source);
             return sourceList;

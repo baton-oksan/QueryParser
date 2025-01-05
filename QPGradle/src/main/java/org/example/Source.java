@@ -12,6 +12,14 @@ public class Source {
         this.sourceTable = sourceTable;
     }
 
+    public String getSourceTable() {
+        return sourceTable;
+    }
+
+    public Query getSourceQuery() {
+        return sourceQuery;
+    }
+
     public void printSource() {
         if (sourceTable != null) {
             System.out.println(sourceTable);

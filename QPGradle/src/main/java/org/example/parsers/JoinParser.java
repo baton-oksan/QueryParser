@@ -12,7 +12,7 @@ public class JoinParser implements Parser<List<Join>> {
     public List<Join> parse(String joinString) {
         Join join = new Join();
         int offset = 0;
-        System.out.println(joinString);
+
         joinString = joinString.trim();
         String[] joinSplit = joinString.split(" ");
 
