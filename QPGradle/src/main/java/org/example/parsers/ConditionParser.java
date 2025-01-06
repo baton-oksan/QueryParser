@@ -5,6 +5,7 @@ import org.example.Source;
 import org.example.Condition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,7 +55,7 @@ public class ConditionParser implements Parser<List<Condition>> {
                 Source source = new Source(SQLParser.parseQuery(subquery));
                 conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1], source));
             } else
-                conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1], new Source(conditionItemToArray[2])));
+                conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1], new Source(String.join(" ", Arrays.copyOfRange(conditionItemToArray, 2, conditionItemToArray.length)))));
         }
     }
 }
