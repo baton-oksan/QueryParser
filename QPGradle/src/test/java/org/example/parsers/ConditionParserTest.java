@@ -30,16 +30,15 @@ class ConditionParserTest {
         assertEquals(expectedResult, result);
     }
 
-//    @Test
-//    public void parseBetweenIfItIsNotTheOnlyConditionAndIsInTheEnd() {
-//        String expectedResult = "job_title = 'developer'";
-//        String testData = "job_title = 'developer' AND salary BETWEEN 50000 AND 100000";
-//
-//        String result = conditionParser.parseBetween(testData);
-//        assertEquals(expectedResult, result);
-//    }
+    @Test
+    public void parseBetweenIfItIsNotTheOnlyConditionAndIsInTheEnd() {
+        String expectedResult = "job_title = 'developer'";
+        String testData = "job_title = 'developer' AND salary BETWEEN 50000 AND 100000";
 
-    //надо еще если between идет вторым
+        String result = conditionParser.parseBetween(testData);
+        assertEquals(expectedResult, result);
+    }
+
 
     @Test
     public void parseConditionWithoutSubquery() {

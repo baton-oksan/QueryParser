@@ -28,16 +28,14 @@ public class ConditionParser implements Parser<List<Condition>> {
         String[] splittedCondition = conditionString.split(" ");
         Pattern betweenPattern;
         if (splittedCondition.length > 5) {
-            betweenPattern = Pattern.compile("(?:.*?AND)?\\s+(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)\\s+(AND)?", Pattern.CASE_INSENSITIVE);
+            betweenPattern = Pattern.compile("(?:AND\\s+)?(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)(?:\\s+AND)?", Pattern.CASE_INSENSITIVE);
         } else {
             betweenPattern = Pattern.compile("(\\S+)\\s+(BETWEEN)\\s+(\\S+\\s+AND\\s+\\S+)", Pattern.CASE_INSENSITIVE);
         }
 
-        System.out.println("CONDITION STRING: " + conditionString);
-
         Matcher betweenMatch = betweenPattern.matcher(conditionString);
+
         while (betweenMatch.find()) {
-            System.out.println("Match found");
             Condition conditionClause = new Condition(betweenMatch.group(1), betweenMatch.group(2), new Source(betweenMatch.group(3)));
             conditionsList.add(conditionClause);
         }
