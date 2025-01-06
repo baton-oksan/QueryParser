@@ -1,8 +1,8 @@
 package org.example.parsers;
 
-import org.example.Join;
-import org.example.JoinType;
-import org.example.Source;
+import org.example.query.Join;
+import org.example.enums.JoinType;
+import org.example.query.Source;
 
 import java.util.ArrayList;
 import java.util.Arrays;

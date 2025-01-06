@@ -1,6 +1,6 @@
-package org.example;
+package org.example.parsers;
 
-import org.example.parsers.*;
+import org.example.query.Query;
 
 import java.util.*;
 import java.util.regex.Matcher;

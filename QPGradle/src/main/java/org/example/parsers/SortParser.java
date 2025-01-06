@@ -1,8 +1,8 @@
 package org.example.parsers;
 
-import org.example.OrderDirectionType;
-import org.example.Sort;
-import org.example.Source;
+import org.example.enums.OrderDirectionType;
+import org.example.query.Sort;
+import org.example.query.Source;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class SortParser implements Parser<List<Sort>> {
         //ORDER BY department ASC, salary DESC;
         //надо сначала сплитануть по запятой, а потом каждый айтем парсить регуляркой
         //первая группа - наш сурс – создаем объект сурс
-        //вторая группа (порядок сортировки) – если не null то создаем объект org.example.Sort расширенным конструктором
-        //иначе создаем объект org.example.Sort с конструктором, который принимает только сурс
+        //вторая группа (порядок сортировки) – если не null то создаем объект org.example.query.Sort расширенным конструктором
+        //иначе создаем объект org.example.query.Sort с конструктором, который принимает только сурс
     }
 }

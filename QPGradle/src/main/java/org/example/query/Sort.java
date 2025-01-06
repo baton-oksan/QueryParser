@@ -1,4 +1,6 @@
-package org.example;
+package org.example.query;
+
+import org.example.enums.OrderDirectionType;
 
 public class Sort {
     private OrderDirectionType orderDirectionType = OrderDirectionType.ASC;

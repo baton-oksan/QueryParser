@@ -1,14 +1,10 @@
 package org.example.parsers;
 
-import org.example.Query;
-import org.example.SQLParser;
-import org.example.Source;
+import org.example.query.Source;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 

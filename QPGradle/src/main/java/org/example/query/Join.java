@@ -1,4 +1,6 @@
-package org.example;
+package org.example.query;
+
+import org.example.enums.JoinType;
 
 public class Join {
     private Source joinSource;

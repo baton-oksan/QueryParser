@@ -1,4 +1,4 @@
-package org.example;
+package org.example.query;
 
 public class Condition {
     private String columnName;

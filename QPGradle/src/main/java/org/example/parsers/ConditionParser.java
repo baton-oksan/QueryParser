@@ -1,8 +1,7 @@
 package org.example.parsers;
 
-import org.example.SQLParser;
-import org.example.Source;
-import org.example.Condition;
+import org.example.query.Source;
+import org.example.query.Condition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +48,7 @@ public class ConditionParser implements Parser<List<Condition>> {
         for (int i = 0; i < conditionSplit.length; i++) {
             String conditionItem = conditionSplit[i];
             String[] conditionItemToArray = conditionItem.split(" ");
-            //если conditionItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект org.example.Query и засунуть его аргументом в конструктор
+            //если conditionItemToArray[2] содержит  if (fromString.contains("<Subquery_")) , то надо создать объект org.example.query.Query и засунуть его аргументом в конструктор
             if (conditionItemToArray[2].contains("<Subquery_")) {
                 String subquery = SQLParser.subqueriesMap.get(conditionItemToArray[2]);
                 Source source = new Source(SQLParser.parseQuery(subquery));

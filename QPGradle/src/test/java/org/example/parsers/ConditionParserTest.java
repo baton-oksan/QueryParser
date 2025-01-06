@@ -1,7 +1,7 @@
 package org.example.parsers;
 
-import org.example.Condition;
-import org.example.Source;
+import org.example.query.Condition;
+import org.example.query.Source;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

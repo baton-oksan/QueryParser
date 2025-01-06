@@ -1,7 +1,6 @@
 package org.example.parsers;
 
-import org.example.SQLParser;
-import org.example.Source;
+import org.example.query.Source;
 
 import java.util.ArrayList;
 import java.util.Arrays;

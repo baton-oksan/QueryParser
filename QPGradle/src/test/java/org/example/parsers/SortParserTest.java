@@ -1,8 +1,8 @@
 package org.example.parsers;
 
-import org.example.OrderDirectionType;
-import org.example.Sort;
-import org.example.Source;
+import org.example.enums.OrderDirectionType;
+import org.example.query.Sort;
+import org.example.query.Source;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

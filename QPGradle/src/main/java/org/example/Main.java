@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.parsers.SQLParser;
+import org.example.query.Query;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -16,7 +19,7 @@ public class Main {
                 "GROUP BY author.name HAVING COUNT(*) > 1 AND SUM(book.cost) > 500 LIMIT 10;";
         String inputQuery4 = "SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000 AND department_id IN (SELECT id FROM departments WHERE location = 'New York');";
 
-        Query query = SQLParser.parseQuery(inputQuery2);
+        Query query = SQLParser.parseQuery(inputQuery);
         query.printQuery();
 
     }

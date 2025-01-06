@@ -1,4 +1,4 @@
-package org.example;
+package org.example.query;
 
 public class Source {
     private String sourceTable;
