@@ -23,9 +23,8 @@ public class Condition {
         this.source = source;
     }
 
-    public void printWhere() {
-        System.out.println(columnName);
-        System.out.println(operator);
+    public void printCondition() {
+        System.out.print("   " + columnName + " " + operator + " ");
         source.printSource();
     }
 

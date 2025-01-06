@@ -21,7 +21,8 @@ public class Sort {
     }
 
     public void printSort() {
+        System.out.print("   " + "Order column: ");
         orderSource.printSource();
-        System.out.println(orderDirectionType);
+        System.out.println("   " + "Order direction: " + orderDirectionType);
     }
 }

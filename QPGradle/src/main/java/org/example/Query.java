@@ -43,53 +43,52 @@ public class Query {
 
         System.out.println("FROM: ");
         for (Source fromSource : fromSources) {
+            System.out.print("   ");
             fromSource.printSource();
         }
-
-
 
         if (joins != null) {
             System.out.print("JOIN: ");
             for (Join join: joins) {
+                System.out.println();
                 join.printJoin();
             }
         }
 
         if (whereClauses != null) {
-            System.out.print("WHERE: ");
+            System.out.println("WHERE: ");
             for (Condition whereClause: whereClauses) {
-                whereClause.printWhere();
+                whereClause.printCondition();
             }
         }
 
         if (groupByColumns != null) {
-            System.out.print("GROUP BY: ");
-            System.out.println(groupByColumns.stream()
+            System.out.println("GROUP BY: ");
+            System.out.println("   " + groupByColumns.stream()
                     .collect(Collectors.joining(", ")));
         }
 
         if (havingClauses != null) {
-            System.out.print("HAVING: ");
-            for (Condition whereClause: havingClauses) {
-                whereClause.printWhere();
+            System.out.println("HAVING: ");
+            for (Condition havingClause: havingClauses) {
+                havingClause.printCondition();
             }
         }
 
         if (sortColumns != null) {
-            System.out.print("ORDER BY: ");
+            System.out.println("ORDER BY: ");
             for (Sort sort : sortColumns) {
                 sort.printSort();
             }
         }
 
         if (limit != null) {
-            System.out.print("LIMIT: ");
-            System.out.println(limit);
+            System.out.println("LIMIT: " + limit);
         }
 
         if (offset != null) {
-            System.out.print("OFFSET: ");
-            System.out.println(offset);
+            System.out.println();
+            System.out.println("OFFSET: " + offset);
         }
     }
 

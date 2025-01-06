@@ -45,8 +45,9 @@ public class Join {
     }
 
     public void printJoin() {
-        System.out.println(joinType);
+        System.out.println("   Join type: " + joinType);
+        System.out.print("   Join source: ");
         joinSource.printSource();
-        System.out.println(onCondition);
+        System.out.println("   Join condition: " + onCondition);
     }
 }
