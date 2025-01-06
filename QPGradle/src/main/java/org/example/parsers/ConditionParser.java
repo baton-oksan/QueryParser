@@ -16,7 +16,7 @@ public class ConditionParser implements Parser<List<Condition>> {
         if (conditionString.contains("between") || conditionString.contains("BETWEEN"))
               conditionString = parseBetween(conditionString);
 
-        if (conditionString.length() > 3)
+        if (conditionString.length() > 3) //if we have something in our string after extracting between
             parseCondition(conditionString);
 
         return conditionsList;

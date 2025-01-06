@@ -4,6 +4,13 @@ public class Sort {
     private OrderDirectionType orderDirectionType = OrderDirectionType.ASC;
     private Source orderSource;
 
+    public OrderDirectionType getOrderDirectionType() {
+        return orderDirectionType;
+    }
+    public Source getOrderSource() {
+        return orderSource;
+    }
+
     public Sort(OrderDirectionType orderDirectionType, Source orderSource) {
         this.orderDirectionType = orderDirectionType;
         this.orderSource = orderSource;

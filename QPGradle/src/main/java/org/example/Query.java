@@ -37,11 +37,15 @@ public class Query {
     public Integer getOffset() {return offset;}
 
     public void printQuery() {
-        System.out.print("SELECT: ");
-        System.out.println(columns.stream()
+        System.out.println("SELECT: ");
+        System.out.println("   " + columns.stream()
                     .collect(Collectors.joining(", ")));
 
-        //почему-то не печатаю тут fromSources
+        System.out.println("FROM: ");
+        for (Source fromSource : fromSources) {
+            fromSource.printSource();
+        }
+
 
 
         if (joins != null) {

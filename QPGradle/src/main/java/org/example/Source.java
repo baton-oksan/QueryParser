@@ -22,13 +22,13 @@ public class Source {
 
     public void printSource() {
         if (sourceTable != null) {
-            System.out.println(sourceTable);
+            System.out.println("   " + sourceTable);
         }
 
         if (sourceQuery != null) {
-            System.out.println("THIS IS SUBQUERY START");
+            System.out.println("----THIS IS SUBQUERY START----");
             sourceQuery.printQuery();
-            System.out.println("THIS IS SUBQUERY END");
+            System.out.println("----THIS IS SUBQUERY END----");
         }
     }
 
