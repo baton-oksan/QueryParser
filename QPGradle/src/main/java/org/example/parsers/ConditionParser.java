@@ -54,7 +54,8 @@ public class ConditionParser implements Parser<List<Condition>> {
                 Source source = new Source(SQLParser.parseQuery(subquery));
                 conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1], source));
             } else
-                conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1], new Source(String.join(" ", Arrays.copyOfRange(conditionItemToArray, 2, conditionItemToArray.length)))));
+                conditionsList.add(new Condition(conditionItemToArray[0], conditionItemToArray[1],
+                        new Source(String.join(" ", Arrays.copyOfRange(conditionItemToArray, 2, conditionItemToArray.length)))));
         }
     }
 }

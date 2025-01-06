@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SQLParser {
-    //private static ArrayList<String> keywords =  new ArrayList<String>(Arrays.asList("select", "from", "where", "left join", "right join", "limit", "offset", "group by", "order by", "and", "in", "asc", "desc", "as", "on"));
     private static final int SELECT_GROUP = 1;
     private static final int FROM_GROUP = 2;
     private static final int JOIN_GROUP = 3;

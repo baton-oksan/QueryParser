@@ -18,7 +18,6 @@ public class SortParser implements Parser<List<Sort>> {
         for (String sortItem: sortItems) {
             Matcher sortMatcher = sortPattern.matcher(sortItem);
             if (sortMatcher.find()) {
-                System.out.println("Match found " + sortMatcher.group(1));
                 Source sortSource = new Source(sortMatcher.group(1));
                 if (sortMatcher.group(2) != null) {
                     sortItemResult = new Sort(OrderDirectionType.valueOf(sortMatcher.group(2)), sortSource);
